@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ntzm\PhpCommentStyle;
 
 final class CommentClassifier
@@ -28,6 +30,6 @@ final class CommentClassifier
 
     private function endsWith(string $haystack, string $needle): bool
     {
-        return \substr_compare($haystack, $needle, -strlen($needle)) === 0;
+        return \substr_compare($haystack, $needle, -\strlen($needle)) === 0;
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Ntzm\PhpCommentStyle\CommentClassifier;
 use Ntzm\PhpCommentStyle\CommentFactory;
 use Ntzm\PhpCommentStyle\CommentFixer;
