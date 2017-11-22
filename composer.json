@@ -1,0 +1,19 @@
+{
+    "name": "ntzm/php-comment-style",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nat Zimmermann",
+            "email": "nat@ntzm.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Ntzm\\PhpCommentStyle\\": "src/"}
+    },
+    "require": {
+        "symfony/console": "^3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    }
+}
