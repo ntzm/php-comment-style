@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 use Ntzm\PhpCommentStyle\Comment;
 use Ntzm\PhpCommentStyle\CommentClassifier;
 use Ntzm\PhpCommentStyle\InvalidCommentException;
