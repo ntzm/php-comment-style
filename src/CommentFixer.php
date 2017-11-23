@@ -20,7 +20,7 @@ final class CommentFixer
     private function fixSingleLine(string $comment): string
     {
         // Single line comments can end in newlines
-        if (\trim($comment) === '//') {
+        if (\rtrim($comment) === '//') {
             return $comment;
         }
 
