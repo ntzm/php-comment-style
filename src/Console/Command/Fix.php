@@ -40,17 +40,19 @@ final class Fix extends Command
             $tokens = \token_get_all($contents);
 
             foreach ($tokens as $token) {
-                if ($token[0] === T_COMMENT) {
-                    $old = new Comment($token[1], $classifier->classify($token[1]));
-                    $new = $fixer->fix($old);
-
-                    if ($old->getContent() === $new->getContent()) {
-                        continue;
-                    }
-
-                    $pos = \strpos($contents, $old->getContent());
-                    $contents = \substr_replace($contents, $new->getContent(), $pos, \strlen($old->getContent()));
+                if ($token[0] !== T_COMMENT) {
+                    continue;
                 }
+
+                $old = new Comment($token[1], $classifier->classify($token[1]));
+                $new = $fixer->fix($old);
+
+                if ($old->getContent() === $new->getContent()) {
+                    continue;
+                }
+
+                $pos = \strpos($contents, $old->getContent());
+                $contents = \substr_replace($contents, $new->getContent(), $pos, \strlen($old->getContent()));
             }
 
             if ($original === $contents) {
