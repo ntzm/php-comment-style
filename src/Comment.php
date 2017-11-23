@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Ntzm\PhpCommentStyle;
 
+use InvalidArgumentException;
+
 final class Comment
 {
     public const TYPE_SINGLE_LINE = 1;
@@ -14,6 +16,10 @@ final class Comment
 
     public function __construct(string $content, int $type)
     {
+        if ($type !== self::TYPE_SINGLE_LINE && $type !== self::TYPE_MULTI_LINE) {
+            throw new InvalidArgumentException('Invalid type');
+        }
+
         $this->content = $content;
         $this->type = $type;
     }
@@ -30,6 +36,10 @@ final class Comment
 
     public function isType(int $type): bool
     {
+        if ($type !== self::TYPE_SINGLE_LINE && $type !== self::TYPE_MULTI_LINE) {
+            throw new InvalidArgumentException('Invalid type');
+        }
+
         return $this->type === $type;
     }
 }
