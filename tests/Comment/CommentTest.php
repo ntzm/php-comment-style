@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Ntzm\PhpCommentStyle\Comment;
+use Ntzm\PhpCommentStyle\Comment\Comment;
 use PHPUnit\Framework\TestCase;
 
 final class CommentTest extends TestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ntzm\PhpCommentStyle;
+namespace Ntzm\PhpCommentStyle\Comment;
 
 use InvalidArgumentException;
 

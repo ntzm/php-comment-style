@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Ntzm\PhpCommentStyle\Comment;
-use Ntzm\PhpCommentStyle\CommentClassifier;
-use Ntzm\PhpCommentStyle\InvalidCommentException;
+use Ntzm\PhpCommentStyle\Comment\Comment;
+use Ntzm\PhpCommentStyle\Comment\CommentClassifier;
+use Ntzm\PhpCommentStyle\Comment\InvalidCommentException;
 use PHPUnit\Framework\TestCase;
 
 final class CommentClassifierTest extends TestCase

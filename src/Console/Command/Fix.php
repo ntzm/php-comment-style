@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Ntzm\PhpCommentStyle\Console\Command;
 
-use Ntzm\PhpCommentStyle\Comment;
-use Ntzm\PhpCommentStyle\CommentClassifier;
-use Ntzm\PhpCommentStyle\CommentFixer;
+use Ntzm\PhpCommentStyle\Comment\Comment;
+use Ntzm\PhpCommentStyle\Comment\CommentClassifier;
+use Ntzm\PhpCommentStyle\Comment\CommentFixer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
