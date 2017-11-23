@@ -20,7 +20,9 @@ final class CommentClassifier
             return Comment::TYPE_MULTI_LINE;
         }
 
-        throw new InvalidCommentException("Comment [$comment] is not a valid comment");
+        throw new InvalidCommentException(
+            "Comment [$comment] is not a valid comment"
+        );
     }
 
     private function startsWith(string $haystack, string $needle): bool
