@@ -38,7 +38,7 @@ final class CommentTest extends TestCase
         $this->assertFalse($comment->isType(Comment::TYPE_SINGLE_LINE));
     }
 
-    public function testIsTypeInvalid()
+    public function testIsTypeInvalid(): void
     {
         $comment = new Comment('// foo', Comment::TYPE_SINGLE_LINE);
 
@@ -48,7 +48,7 @@ final class CommentTest extends TestCase
         $comment->isType(100);
     }
 
-    public function testNewInvalidType()
+    public function testNewInvalidType(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid type');
