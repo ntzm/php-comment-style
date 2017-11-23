@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use Ntzm\PhpCommentStyle\Comment;
 use Ntzm\PhpCommentStyle\CommentClassifier;
-use Ntzm\PhpCommentStyle\CommentFactory;
 use Ntzm\PhpCommentStyle\CommentFixer;
 use PHPUnit\Framework\TestCase;
 
@@ -18,7 +18,7 @@ final class CommentFixerTest extends TestCase
     {
         $this->assertSame(
             $expected,
-            (new CommentFixer())->fix((new CommentFactory(new CommentClassifier()))->make($input ?? $expected))->getContent()
+            (new CommentFixer())->fix($this->makeComment($input ?? $expected))->getContent()
         );
     }
 
@@ -89,5 +89,10 @@ final class CommentFixerTest extends TestCase
                 '/*🍆🍆🍆*/',
             ],
         ];
+    }
+
+    private function makeComment(string $content): Comment
+    {
+        return new Comment($content, (new CommentClassifier())->classify($content));
     }
 }
