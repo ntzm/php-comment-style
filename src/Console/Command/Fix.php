@@ -7,6 +7,7 @@ namespace Ntzm\PhpCommentStyle\Console\Command;
 use Ntzm\PhpCommentStyle\Comment\Comment;
 use Ntzm\PhpCommentStyle\Comment\CommentClassifier;
 use Ntzm\PhpCommentStyle\Comment\CommentFixer;
+use Ntzm\PhpCommentStyle\Tokenizer\Tokens;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -37,9 +38,9 @@ final class Fix extends Command
         foreach ($files as $file) {
             $original = $file->getContents();
             $contents = $original;
-            $tokens = \token_get_all($contents);
+            $tokens = new Tokens(\token_get_all($contents));
 
-            foreach ($tokens as $token) {
+            foreach ($tokens as $index => $token) {
                 if ($token[0] !== T_COMMENT) {
                     continue;
                 }
@@ -51,15 +52,16 @@ final class Fix extends Command
                     continue;
                 }
 
-                $pos = \strpos($contents, $old->getContent());
-                $contents = \substr_replace($contents, $new->getContent(), $pos, \strlen($old->getContent()));
+                $tokens->replace($index, $new->getContent());
             }
 
-            if ($original === $contents) {
+            $code = $tokens->toCode();
+
+            if ($original === $code) {
                 continue;
             }
 
-            \file_put_contents($file->getPathname(), $contents);
+            \file_put_contents($file->getPathname(), $code);
         }
     }
 }
