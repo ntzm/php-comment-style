@@ -16,3 +16,4 @@ install:
 script:
   - composer validate
   - vendor/bin/phpunit
+  - vendor/bin/phpstan analyse -l 7 src tests
