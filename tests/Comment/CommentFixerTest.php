@@ -77,6 +77,10 @@ final class CommentFixerTest extends TestCase
                 "/*foo\n*/",
             ],
             [
+                '/* foo',
+                '/*foo',
+            ],
+            [
                 '// 🍆🍆🍆',
             ],
             [

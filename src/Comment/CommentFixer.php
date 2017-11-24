@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Ntzm\PhpCommentStyle\Comment;
 
+use Ntzm\PhpCommentStyle\Util;
+
 final class CommentFixer
 {
     public function fix(Comment $comment): Comment
@@ -47,7 +49,7 @@ final class CommentFixer
             $comment = $this->insertSpaceAt($comment, 2);
         }
 
-        if (!\ctype_space($comment[-3])) {
+        if (Util::endsWith($comment, '*/') && !\ctype_space($comment[-3])) {
             $comment = $this->insertSpaceAt($comment, -2);
         }
 

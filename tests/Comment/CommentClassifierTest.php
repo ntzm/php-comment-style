@@ -56,6 +56,8 @@ final class CommentClassifierTest extends TestCase
             ['/*   foo*/'],
             ['/*foo    */'],
             ['/*    */'],
+            ['/*'],
+            ['/*   '],
         ];
     }
 
@@ -80,7 +82,6 @@ final class CommentClassifierTest extends TestCase
             [' /* foo bar */'],
             ['/ foo'],
             ['* foo */'],
-            ['/*/'],
         ];
     }
 }
