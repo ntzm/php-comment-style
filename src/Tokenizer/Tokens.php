@@ -10,6 +10,7 @@ use IteratorAggregate;
 final class Tokens implements IteratorAggregate
 {
     private $tokens;
+    private $hasChanged = false;
 
     public function __construct(array $tokens)
     {
@@ -18,6 +19,7 @@ final class Tokens implements IteratorAggregate
 
     public function replace(int $index, $token): void
     {
+        $this->hasChanged = true;
         $this->tokens[$index] = $token;
     }
 
@@ -26,6 +28,11 @@ final class Tokens implements IteratorAggregate
         return \array_reduce($this->tokens, function (string $carry, $token) {
             return $carry.(\is_array($token) ? $token[1] : $token);
         }, '');
+    }
+
+    public function hasChanged(): bool
+    {
+        return $this->hasChanged;
     }
 
     public function getIterator(): ArrayIterator

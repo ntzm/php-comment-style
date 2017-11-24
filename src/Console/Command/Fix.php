@@ -36,9 +36,7 @@ final class Fix extends Command
         ;
 
         foreach ($files as $file) {
-            $original = $file->getContents();
-            $contents = $original;
-            $tokens = new Tokens(\token_get_all($contents));
+            $tokens = new Tokens(\token_get_all($file->getContents()));
 
             foreach ($tokens as $index => $token) {
                 if ($token[0] !== T_COMMENT) {
@@ -55,13 +53,9 @@ final class Fix extends Command
                 $tokens->replace($index, $new->getContent());
             }
 
-            $code = $tokens->toCode();
-
-            if ($original === $code) {
-                continue;
+            if ($tokens->hasChanged()) {
+                \file_put_contents($file->getPathname(), $tokens->toCode());
             }
-
-            \file_put_contents($file->getPathname(), $code);
         }
     }
 }
