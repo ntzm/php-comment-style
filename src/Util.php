@@ -8,6 +8,10 @@ final class Util
 {
     public static function startsWith(string $haystack, string $needle): bool
     {
+        if ($needle === '') {
+            return false;
+        }
+
         return \strpos($haystack, $needle) === 0;
     }
 
