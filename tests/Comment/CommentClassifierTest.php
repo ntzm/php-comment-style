@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Ntzm\Tests\PhpCommentStyle\Comment;
+
 use Ntzm\PhpCommentStyle\Comment\Comment;
 use Ntzm\PhpCommentStyle\Comment\CommentClassifier;
 use Ntzm\PhpCommentStyle\Comment\InvalidCommentException;

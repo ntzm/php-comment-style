@@ -11,7 +11,7 @@
         "psr-4": {"Ntzm\\PhpCommentStyle\\": "src/"}
     },
     "autoload-dev": {
-        "classmap": ["tests/"]
+        "psr-4": {"Ntzm\\Tests\\PhpCommentStyle\\": "tests/"}
     },
     "require": {
         "php": "^7.1",

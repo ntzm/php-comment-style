@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+namespace Ntzm\Tests\PhpCommentStyle\Comment;
+
+use InvalidArgumentException;
 use Ntzm\PhpCommentStyle\Comment\Comment;
 use PHPUnit\Framework\TestCase;
 
