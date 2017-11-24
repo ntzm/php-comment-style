@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ntzm\PhpCommentStyle\Tokenizer;
 
 use ArrayIterator;
@@ -21,8 +23,8 @@ final class Tokens implements IteratorAggregate
 
     public function toCode(): string
     {
-        return array_reduce($this->tokens, function (string $carry, $token) {
-            return $carry.(is_array($token) ? $token[1] : $token);
+        return \array_reduce($this->tokens, function (string $carry, $token) {
+            return $carry.(\is_array($token) ? $token[1] : $token);
         }, '');
     }
 

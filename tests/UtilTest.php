@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ntzm\Tests\PhpCommentStyle;
 
 use Ntzm\PhpCommentStyle\Util;
@@ -8,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 final class UtilTest extends TestCase
 {
     /**
-     * @param bool $result
+     * @param bool   $result
      * @param string $haystack
      * @param string $needle
      * @dataProvider provideStartsWithCases
@@ -31,7 +33,7 @@ final class UtilTest extends TestCase
     }
 
     /**
-     * @param bool $result
+     * @param bool   $result
      * @param string $haystack
      * @param string $needle
      * @dataProvider provideEndsWithCases
