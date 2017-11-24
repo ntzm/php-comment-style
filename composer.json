@@ -1,5 +1,6 @@
 {
     "name": "ntzm/php-comment-style",
+    "description": "An application for fixing PHP comment style",
     "license": "MIT",
     "authors": [
         {
