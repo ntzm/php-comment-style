@@ -3,10 +3,10 @@
 
 declare(strict_types=1);
 
-require __DIR__.'/../vendor/autoload.php';
-
 use Ntzm\PhpCommentStyle\Console\Command\Fix;
 use Symfony\Component\Console\Application;
+
+require __DIR__.'/../vendor/autoload.php';
 
 $application = new Application();
 
