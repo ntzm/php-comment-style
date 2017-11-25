@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Ntzm\PhpCommentStyle\Console\Command;
 
-use Ntzm\PhpCommentStyle\Comment\Comment;
 use Ntzm\PhpCommentStyle\Comment\CommentClassifier;
 use Ntzm\PhpCommentStyle\Comment\CommentFixer;
-use Ntzm\PhpCommentStyle\Tokenizer\Tokens;
+use Ntzm\PhpCommentStyle\Runner;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,8 +25,10 @@ final class Fix extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
-        $classifier = new CommentClassifier();
-        $fixer = new CommentFixer();
+        $runner = new Runner(
+            new CommentClassifier(),
+            new CommentFixer()
+        );
 
         $files = (new Finder())
             ->files()
@@ -35,29 +36,9 @@ final class Fix extends Command
             ->name('*.php')
         ;
 
-        foreach ($files as $file) {
-            $tokens = new Tokens(\token_get_all($file->getContents()));
+        $fixedFiles = $runner->fix($files);
 
-            foreach ($tokens as $index => $token) {
-                if ($token[0] !== T_COMMENT) {
-                    continue;
-                }
-
-                $old = new Comment($token[1], $classifier->classify($token[1]));
-                $new = $fixer->fix($old);
-
-                if ($old->getContent() === $new->getContent()) {
-                    continue;
-                }
-
-                $tokens->replace($index, $new->getContent());
-            }
-
-            if (!$tokens->hasChanged()) {
-                continue;
-            }
-
-            \file_put_contents($file->getPathname(), $tokens->toCode());
+        foreach ($fixedFiles as $file) {
             $output->writeln("Fixed comments in {$file->getRelativePathname()}");
         }
     }
