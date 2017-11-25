@@ -39,11 +39,7 @@ final class Runner
     {
         $tokens = new Tokens(\token_get_all($file->getContents()));
 
-        foreach ($tokens as $index => $token) {
-            if ($token[0] !== T_COMMENT) {
-                continue;
-            }
-
+        foreach ($tokens->getComments() as $index => $token) {
             $old = new Comment($token[1], $this->classifier->classify($token[1]));
             $new = $this->fixer->fix($old);
 

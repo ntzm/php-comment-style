@@ -23,6 +23,13 @@ final class Tokens implements IteratorAggregate
         $this->tokens[$index] = $token;
     }
 
+    public function getComments(): array
+    {
+        return \array_filter($this->tokens, function ($token) {
+            return $token[0] === T_COMMENT;
+        });
+    }
+
     public function toCode(): string
     {
         return \array_reduce($this->tokens, function (string $carry, $token) {
