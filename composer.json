@@ -8,6 +8,7 @@
             "email": "nat@ntzm.io"
         }
     ],
+    "bin": ["bin/php-comment-style"],
     "autoload": {
         "psr-4": {"Ntzm\\PhpCommentStyle\\": "src/"}
     },
