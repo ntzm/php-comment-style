@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ntzm\Tests\PhpCommentStyle;
+namespace Ntzm\Tests\PhpCommentStyle\Tokenizer;
 
 use Ntzm\PhpCommentStyle\Tokenizer\Tokens;
 use PHPUnit\Framework\TestCase;
