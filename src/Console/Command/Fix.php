@@ -53,9 +53,12 @@ final class Fix extends Command
                 $tokens->replace($index, $new->getContent());
             }
 
-            if ($tokens->hasChanged()) {
-                \file_put_contents($file->getPathname(), $tokens->toCode());
+            if (!$tokens->hasChanged()) {
+                continue;
             }
+
+            \file_put_contents($file->getPathname(), $tokens->toCode());
+            $output->writeln("Fixed comments in {$file->getRelativePathname()}");
         }
     }
 }
